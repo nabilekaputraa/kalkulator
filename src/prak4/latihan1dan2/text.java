@@ -1,6 +1,6 @@
-package prak4.latihan1dan2;
 import java.util.Scanner;
-public class textanalyzer {
+
+public class text {
     private static String text = "";
 
     public static void main(String[] args) {
@@ -27,3 +27,49 @@ public class textanalyzer {
                     break;
                 case 3:
                     countWords();
+                    break;
+                case 4:
+                    searchWord(scanner);
+                    break;
+                case 5:
+                    System.out.println("Terima kasih telah menggunakan program Teks Analisis!\n");
+                    System.exit(0);
+                default:
+                    System.out.println("Pilihan tidak valid. Silakan pilih lagi.");
+                    break;
+            }
+        }
+    }
+
+    private static void inputText(Scanner scanner) {
+        System.out.print("Masukkan teks: ");
+        text = scanner.nextLine();
+        System.out.println("Teks telah dimasukkan!\n");
+    }
+
+    private static void countCharacters() {
+        int characterCount = text.length();
+        System.out.println("Jumlah karakter dalam teks: " + characterCount + "\n");
+    }
+
+    private static void countWords() {
+        String[] words = text.split("\\s+");
+        int wordCount = words.length;
+        System.out.println("Jumlah kata dalam teks: " + wordCount + "\n");
+    }
+
+    private static void searchWord(Scanner scanner) {
+        System.out.print("Masukkan kata yang ingin dicari: ");
+        String searchWord = scanner.nextLine();
+
+        int count = 0;
+        String[] words = text.split("\\s+");
+        for (String word : words) {
+            if (word.equalsIgnoreCase(searchWord)) {
+                count++;
+            }
+        }
+
+        System.out.println("Kata '" + searchWord + "' ditemukan sebanyak " + count + " kali dalam teks.\n");
+    }
+}
